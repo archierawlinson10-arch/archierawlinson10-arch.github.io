@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Baked — Frankby, Wirral</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Independent cafe at Frankby Stiles, Wirral. Great coffee, good food and a warm welcome — dogs included.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400..900;1,400..900&family=Alex+Brush&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    color-scheme: light;
+    --paper: #DDCDBE;
+    --paper-dim: #D2C0AC;
+    --card: #E9E0D5;
+    --ink: #535456;
+    --ink-soft: #6E6D6C;
+    --ink-faint: #948E86;
+    --line: #C3B29D;
+    --line-strong: #535456;
+  }
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce){ html{ scroll-behavior: auto; } }
+  body{
+    margin:0; background: var(--paper); color: var(--ink);
+    font-family: "Jost", -apple-system, "Segoe UI", sans-serif;
+    font-weight: 300;
+    font-size: 17px; line-height: 1.7; -webkit-font-smoothing: antialiased;
+  }
+  h1,h2{ font-family: "Bodoni Moda", serif; font-weight: 500; line-height: 1.05; margin: 0; text-wrap: balance; }
+  .script{ font-family:"Alex Brush", cursive; font-weight:400; line-height:1; }
+  p{ margin:0; } a{ color:inherit; text-decoration:none; }
+  ul,table{ margin:0; padding:0; } li{ list-style:none; }
+  img,svg{ max-width:100%; }
+  .eyebrow{ font-family:"Jost",sans-serif; font-size:.74rem; font-weight:500; text-transform:uppercase; letter-spacing:.28em; color:var(--ink-soft); margin:0 0 1.1rem; }
+  :focus-visible{ outline:2px solid var(--ink); outline-offset:3px; }
+  .wrap{ max-width:920px; margin-inline:auto; padding-inline:clamp(20px,5vw,56px); }
+  section{ padding-block:clamp(64px,10vw,124px); }
+
+  .reveal{ opacity:1; transform:none; }
+  @media (prefers-reduced-motion: no-preference){
+    .reveal{ opacity:0; transform:translateY(14px); transition:opacity .8s ease, transform .8s ease; }
+    .reveal.in-view{ opacity:1; transform:none; }
+  }
+
+  .btn{ display:inline-flex; align-items:center; gap:.6em; padding:1rem 2rem; font-family:"Jost",sans-serif; font-size:.86rem; font-weight:500; letter-spacing:.08em; text-transform:uppercase;
+    border:1px solid var(--ink); border-radius:0; transition:background .2s ease, color .2s ease; }
+  .btn-primary{ background:var(--ink); border-color:var(--ink); color:var(--paper); }
+  .btn-primary:hover{ background:transparent; color:var(--ink); }
+  .btn-ghost{ background:transparent; }
+  .btn-ghost:hover{ background:var(--ink); color:var(--paper); }
+  .text-link{ font-weight:500; border-bottom:1px solid var(--ink-faint); padding-bottom:2px; letter-spacing:.02em; }
+  .text-link:hover{ border-color:var(--ink); }
+
+  header.nav{ position:sticky; top:0; z-index:50; background:color-mix(in srgb, var(--paper) 88%, transparent); backdrop-filter:blur(8px); border-bottom:1px solid var(--line); }
+  .nav-inner{ max-width:920px; margin-inline:auto; padding:20px clamp(20px,5vw,56px); display:flex; align-items:center; gap:2rem; }
+  .brand{ font-family:"Bodoni Moda",serif; font-weight:700; }
+  .wordmark{ display:flex; align-items:baseline; gap:.4rem; }
+  .wordmark .brand{ font-weight:700; font-size:1.3rem; letter-spacing:.02em; }
+  .wordmark .script{ font-size:1.5rem; color:var(--ink-soft); }
+  .nav-links{ display:flex; gap:2rem; margin-right:auto; font-size:.86rem; font-weight:400; letter-spacing:.02em; }
+  .nav-cta{ padding:.7rem 1.4rem; font-size:.78rem; }
+  @media (max-width:700px){ .nav-links{ display:none; } }
+
+  .hero{ text-align:center; padding-block:clamp(72px,13vw,140px) clamp(64px,8vw,96px); }
+  .hero-lockup{ display:flex; flex-direction:column; align-items:center; }
+  .hero-lockup .brand{ font-size:clamp(4.2rem,17vw,10rem); font-weight:900; letter-spacing:-.02em; }
+  .hero-lockup .script{ font-size:clamp(1.8rem,5.5vw,3rem); color:var(--ink-soft); margin-top:-.4rem; }
+  .hero .lede{ margin:2rem auto 0; max-width:44ch; font-size:1.1rem; color:var(--ink-soft); font-weight:300; }
+  .hero-actions{ margin-top:2.6rem; display:flex; justify-content:center; flex-wrap:wrap; gap:1rem; }
+
+  .about{ background:var(--paper-dim); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+  .about-inner{ text-align:center; }
+  .about p.quote{ font-family:"Bodoni Moda", serif; font-style:italic; font-weight:400; font-size:clamp(1.4rem,4vw,2rem); max-width:24ch; margin-inline:auto; line-height:1.35; }
+  .about p.body{ margin:2rem auto 0; max-width:56ch; font-size:1.05rem; color:var(--ink-soft); font-weight:300; }
+
+  .facts{ display:grid; grid-template-columns:1fr; gap:2.4rem; margin-top:3.2rem; text-align:center; }
+  .fact .num{ font-family:"Bodoni Moda",serif; font-size:1.9rem; color:var(--ink); display:block; }
+  .fact .label{ font-size:.78rem; text-transform:uppercase; letter-spacing:.14em; color:var(--ink-faint); margin-top:.4rem; display:block; }
+  @media (min-width:640px){ .facts{ grid-template-columns:repeat(3,1fr); } }
+
+  .visit-inner{ display:grid; grid-template-columns:1.2fr 1fr; gap:clamp(2.5rem,6vw,5rem); }
+  .visit-col h2{ font-size:clamp(1.9rem,4.5vw,2.5rem); margin-bottom:.7rem; }
+  .visit-address{ color:var(--ink-soft); font-size:1.02rem; margin-bottom:1.3rem; font-weight:300; }
+  .visit-contact{ margin-top:1.6rem; display:flex; flex-direction:column; gap:.7rem; font-weight:400; }
+  .hours-table{ width:100%; border-collapse:collapse; }
+  .hours-table tr{ border-bottom:1px solid var(--line); }
+  .hours-table th,.hours-table td{ text-align:left; padding:.85rem 0; font-weight:400; font-size:.95rem; }
+  .hours-table th{ color:var(--ink-soft); font-weight:300; width:6rem; }
+  .hours-table td{ text-align:right; font-variant-numeric:tabular-nums; }
+  @media (max-width:780px){ .visit-inner{ grid-template-columns:1fr; } }
+
+  footer{ border-top:1px solid var(--line-strong); padding-block:2.8rem; }
+  .footer-inner{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:1rem; align-items:center; }
+  .credit{ font-size:.78rem; color:var(--ink-faint); font-style:italic; font-weight:300; }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="wordmark" href="#top"><span class="brand">Baked</span><span class="script">cafe</span></a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#about">About</a>
+      <a href="#visit">Visit</a>
+    </nav>
+    <a class="btn btn-primary nav-cta" href="tel:+441516251293">Call</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero reveal" id="top">
+    <div class="wrap">
+      <p class="eyebrow">Frankby Stiles · Wirral</p>
+      <div class="hero-lockup">
+        <span class="brand">Baked</span>
+        <span class="script">cafe</span>
+      </div>
+      <p class="lede">An independent cafe at Frankby Stiles, just outside Birkenhead — great coffee, honest food, and a genuine welcome for the local community. Dogs very much included.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="tel:+441516251293">Call 0151 625 1293</a>
+        <a class="btn btn-ghost" href="https://www.instagram.com/baked.est21cafe/" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="about reveal">
+    <div class="wrap about-inner">
+      <p class="quote">Simple, elegant, and built from rustic wood.</p>
+      <p class="body">Baked opened in March 2021, in a converted corner of Frankby Stiles in the Wirral countryside — eleven tables, forty-four seats, and support from the local community that was overwhelming from day one. It's stayed a genuinely small, tasteful, unhurried kind of place ever since.</p>
+      <div class="facts">
+        <div class="fact"><span class="num">2021</span><span class="label">Established</span></div>
+        <div class="fact"><span class="num">11</span><span class="label">Tables</span></div>
+        <div class="fact"><span class="num">19K+</span><span class="label">Followers</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="visit" class="reveal">
+    <div class="wrap visit-inner">
+      <div class="visit-col">
+        <p class="eyebrow">Visit</p>
+        <h2>Frankby Stiles</h2>
+        <p class="visit-address">Larton, Birkenhead, Wirral CH48 1PL</p>
+        <a class="text-link" href="https://www.google.com/maps/search/?api=1&query=Frankby+Stiles+Larton+Birkenhead+CH48+1PL" target="_blank" rel="noopener">Get directions</a>
+        <div class="visit-contact">
+          <a href="tel:+441516251293">0151 625 1293</a>
+          <a href="https://www.instagram.com/baked.est21cafe/" target="_blank" rel="noopener">@baked.est21cafe</a>
+        </div>
+      </div>
+      <div class="visit-col">
+        <p class="eyebrow">Hours</p>
+        <table class="hours-table">
+          <tr><th>Mon</th><td>10:00–17:00</td></tr>
+          <tr><th>Tue</th><td>10:00–16:00</td></tr>
+          <tr><th>Wed–Fri</th><td>10:00–17:00</td></tr>
+          <tr><th>Sat</th><td>09:00–17:00</td></tr>
+          <tr><th>Sun</th><td>09:00–16:00</td></tr>
+        </table>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <a class="wordmark" href="#top"><span class="brand" style="font-size:1.1rem;">Baked</span><span class="script" style="font-size:1.3rem;">cafe</span></a>
+    <p class="credit">Unsolicited concept demo — not the official Baked website. Built from publicly available information; please verify all details before publishing.</p>
+  </div>
+</footer>
+
+<script>
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('in-view'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in-view'); });
+  }
+</script>
+
+</body>
+</html>
